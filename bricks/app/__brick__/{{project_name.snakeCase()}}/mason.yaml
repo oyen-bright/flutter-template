@@ -1,0 +1,7 @@
+# Code generators for this project. Agents MUST use these instead of
+# creating feature folders or shared UI components by hand. See AGENTS.md.
+bricks:
+  feature:
+    path: {{{bricks_path}}}/feature
+  ui_component:
+    path: {{{bricks_path}}}/ui_component

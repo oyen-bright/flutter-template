@@ -1,0 +1,7 @@
+bricks:
+  app:
+    path: bricks/app
+  feature:
+    path: bricks/feature
+  ui_component:
+    path: bricks/ui_component

@@ -1,0 +1,26 @@
+name: app
+description: Flutter app skeleton - feature-first, BLoC/Cubit, get_it + injectable, go_router, dio, shadcn_ui, agent rules.
+version: 0.1.0
+environment:
+  mason: ^0.1.0
+vars:
+  project_name:
+    type: string
+    description: App package name
+    default: my_app
+    prompt: Project name (snake_case)?
+  org:
+    type: string
+    description: Reverse-domain org for the bundle id
+    default: com.example
+    prompt: Organization (reverse domain)?
+  description:
+    type: string
+    description: Short app description
+    default: A new Flutter app.
+    prompt: Description?
+  bricks_path:
+    type: string
+    description: Root folder (or git checkout) of this template's bricks, written into the generated mason.yaml
+    default: /Users/brinnixs/Documents/Flutter/Packages/flutter-template/bricks
+    prompt: Template bricks path?

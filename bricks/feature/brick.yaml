@@ -1,0 +1,33 @@
+name: feature
+description: A feature (data / domain / presentation) with a Cubit or Bloc, repository returning Result, page, route and tests.
+version: 0.1.0
+environment:
+  mason: ^0.1.0
+vars:
+  name:
+    type: string
+    description: Feature name (snake_case), e.g. transfer
+    prompt: Feature name?
+  type:
+    type: enum
+    description: State holder - see AGENTS.md section 2 for how to choose
+    default: cubit
+    prompt: Cubit or Bloc?
+    values:
+      - cubit
+      - bloc
+  persist:
+    type: boolean
+    description: Hydrated (survives restart). Never for sensitive data.
+    default: false
+    prompt: Persist state across restarts?
+  domain:
+    type: boolean
+    description: Generate the domain layer (entity + repository interface)
+    default: true
+    prompt: Include a domain layer?
+  route:
+    type: boolean
+    description: Register a GoRoute for the feature page
+    default: true
+    prompt: Add a route?

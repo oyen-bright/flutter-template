@@ -1,0 +1,21 @@
+import 'package:injectable/injectable.dart';
+import 'package:{{package}}/core/result/result.dart';
+import 'package:{{package}}/features/{{name}}/data/sources/{{name}}_remote_data_source.dart';
+{{#domain}}import 'package:{{package}}/features/{{name}}/domain/entities/{{name}}.dart';
+import 'package:{{package}}/features/{{name}}/domain/repositories/{{name}}_repository.dart';{{/domain}}{{^domain}}import 'package:{{package}}/features/{{name}}/data/models/{{name}}_model.dart';{{/domain}}
+
+{{#domain}}@LazySingleton(as: {{name.pascalCase()}}Repository)
+class {{name.pascalCase()}}RepositoryImpl implements {{name.pascalCase()}}Repository {
+  {{name.pascalCase()}}RepositoryImpl(this._remote);{{/domain}}{{^domain}}/// Every method returns a [Result] and never throws.
+@lazySingleton
+class {{name.pascalCase()}}Repository {
+  {{name.pascalCase()}}Repository(this._remote);{{/domain}}
+
+  final {{name.pascalCase()}}RemoteDataSource _remote;
+
+{{#domain}}  @override
+  Future<Result<List<{{name.pascalCase()}}>>> fetchAll() => guard(() async {
+    final models = await _remote.fetchAll();
+    return models.map((model) => model.toEntity()).toList();
+  });{{/domain}}{{^domain}}  Future<Result<List<{{name.pascalCase()}}Model>>> fetchAll() => guard(_remote.fetchAll);{{/domain}}
+}
